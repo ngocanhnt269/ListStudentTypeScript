@@ -19,13 +19,12 @@ const StudentDetailPage = () => {
     const fetchData = async () => {
       const result = await fetch(`${Config.API_BASE_URL}students/${id}`);
       const body = await result.json();
-      //console.log(body);
       setStudentInfo(body);
     };
     fetchData();
   }, [id]);
 
-  if (!studentInfo) return <NotFoundPage />;
+  if (studentInfo.StudentId == 0) return <NotFoundPage />;
 
   return (
     <section>
